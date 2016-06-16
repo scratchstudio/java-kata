@@ -3,9 +3,7 @@ package com.api.lang;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * java.lang.String 클래스 테스트
@@ -93,6 +91,44 @@ public class StringTest {
             return  true;
         else
             return false;
+    }
+
+    @Test
+    public void editStringTest() {
+        assertEquals("Technology", "Java Technology".substring(5));
+        assertEquals("Tech", "Java Technology".substring(5, 9));
+
+        String str = "Hello,String,Class";
+        String[] splitArray = str.split(",");
+        assertEquals("Hello", splitArray[0]);
+        assertEquals("String", splitArray[1]);
+        assertEquals("Class", splitArray[2]);
+
+        assertFalse("trim".equals(" trim "));
+        assertTrue("trim".equals(" trim ".trim()));
+
+        str = "abcdef";
+        assertEquals("abadef", str.replace('c', 'a'));
+        assertEquals("abcdef", str);
+        str = str.replace('c', 'a');
+        assertEquals("abadef", str);
+        assertEquals("zbadef", str.replaceFirst("a", "z"));
+    }
+
+    @Test
+    public void stringCastTest() {
+        byte b = 1;
+
+        String castToString1 = String.valueOf(b);
+        String castToString2 = b+"";
+
+        assertTrue(castToString1 instanceof String);
+        assertTrue(castToString2 instanceof String);
+
+        String nullStr = null;
+        assertEquals("null", String.valueOf(nullStr));
+
+
     }
 
 }
