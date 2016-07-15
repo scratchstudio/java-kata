@@ -3,6 +3,8 @@ package com.api.lang;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.StringTokenizer;
+
 import static org.junit.Assert.*;
 
 /**
@@ -13,6 +15,30 @@ public class StringTest {
     @Before
     public void setUp() {
 
+    }
+
+    @Test
+    public void splitTest() {
+        String text = "APPLE|CARROT|PIZZA";
+        String [] array = text.split("\\|");
+        // String [] array = text.split((Pattern.quote("|")));
+
+        assertEquals(3, array.length);
+    }
+
+    @Test
+    public void toknizerTest() {
+        String text = "APPLE|CARROT|PIZZA";
+        StringTokenizer st = new StringTokenizer(text, "|");
+        String [] array = new String[3];
+        int i = 0;
+
+        while (st.hasMoreTokens()) {
+            array[i] = st.nextToken();
+            i++;
+        }
+
+        assertEquals(3, array.length);
     }
 
     @Test
