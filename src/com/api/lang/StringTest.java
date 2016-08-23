@@ -160,7 +160,7 @@ public class StringTest {
         assertEquals("null", String.valueOf(nullStr));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void 스트링으로_toString_형변환시_null체크() {
         Integer nullValue = null;
 
@@ -177,8 +177,8 @@ public class StringTest {
     public void 스트링_null방지_형변환() {
         Integer nullValue = null;
 
-        String nullToString1 = String.valueOf(nullValue);
-        assertThat("null", is(nullToString1));
+        String nullToString = String.valueOf(nullValue);
+        assertThat("null", is(nullToString));
     }
 
 }
