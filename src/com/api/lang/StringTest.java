@@ -5,7 +5,12 @@ import org.junit.Test;
 
 import java.util.StringTokenizer;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * java.lang.String 클래스 테스트
@@ -18,7 +23,7 @@ public class StringTest {
     }
 
     @Test
-    public void splitTest() {
+    public void split_정규식과_사용한다() {
         String text = "APPLE|CARROT|PIZZA";
         String [] array = text.split("\\|");
         // String [] array = text.split((Pattern.quote("|")));
@@ -27,7 +32,7 @@ public class StringTest {
     }
 
     @Test
-    public void toknizerTest() {
+    public void toknizer_문자와_사용한() {
         String text = "APPLE|CARROT|PIZZA";
         StringTokenizer st = new StringTokenizer(text, "|");
         String [] array = new String[3];
@@ -153,8 +158,27 @@ public class StringTest {
 
         String nullStr = null;
         assertEquals("null", String.valueOf(nullStr));
+    }
 
+    @Test(expected = NullPointerException.class)
+    public void 스트링으로_toString_형변환시_null체크() {
+        Integer nullValue = null;
 
+        try {
+            String nullToString = nullValue.toString();
+        } catch (NullPointerException e) {
+            return;
+        }
+
+        fail();
+    }
+
+    @Test
+    public void 스트링_null방지_형변환() {
+        Integer nullValue = null;
+
+        String nullToString1 = String.valueOf(nullValue);
+        assertThat("null", is(nullToString1));
     }
 
 }
