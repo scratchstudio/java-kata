@@ -1,4 +1,4 @@
-package com.api.lang.com.api.lang.runnable;
+package lang.runnable;
 
 import org.junit.Before;
 import org.junit.Test;

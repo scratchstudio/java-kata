@@ -1,12 +1,10 @@
-package com.api;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 /**
- * java.lang.String 클래스 테스트
+ * switch() 테스트
  */
 public class SwitchCaseTest {
     @Before

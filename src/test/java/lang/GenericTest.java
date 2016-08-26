@@ -1,4 +1,4 @@
-package com.api.lang;
+package lang;
 
 import org.junit.Before;
 import org.junit.Test;

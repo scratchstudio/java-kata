@@ -1,4 +1,4 @@
-package com.api.lang.com.api.util;
+package lang.util;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +12,6 @@ import java.util.HashMap;
 public class CollectionsTest {
 
     HashMap hashMap;
-
 
     @Before
     public void setUp() {
