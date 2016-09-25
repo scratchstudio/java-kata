@@ -181,4 +181,21 @@ public class StringTest {
         assertThat("null", is(nullToString));
     }
 
+    @Test
+    public void 문자열_비교_startsWith() {
+        //given
+
+        //when
+        boolean isTrue = "abcdef".startsWith("ab");
+
+        //then
+        assertTrue(isTrue);
+
+        //and when
+        //a비교 하는 스트링이 startWith()에 매개변수로 넘기는 스트링보다 짧으면 false 를 반환
+        isTrue = "ab".startsWith("abcdef");
+
+        //then
+        assertFalse(isTrue);
+    }
 }
