@@ -1,4 +1,4 @@
-# java-api-study
+# Java Kata
 - 자바에서 제공하는 API가 어떤 식으로 동작하는지 테스트 하기 위한 레파지토리.
 
 
