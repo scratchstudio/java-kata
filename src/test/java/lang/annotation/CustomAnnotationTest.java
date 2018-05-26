@@ -1,10 +1,14 @@
 package lang.annotation;
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 import java.lang.annotation.Annotation;
-
-import static org.junit.Assert.*;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
  * @author Kj Nam
@@ -33,4 +37,32 @@ public class CustomAnnotationTest {
         assertTrue(result.contains("date=2017/03/11"));
         assertTrue(result.contains("reviewers=[John, Allen]"));
     }
+}
+
+@ClassPreamble(
+        author = "Tester",
+        date = "2017/03/11",
+        reviewers = {"John", "Allen"}
+)
+class CustomAnnotation {
+    @Override
+    public String toString() {
+        return "Hello, World!";
+    }
+}
+
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@interface ClassPreamble {
+    String author();
+
+    String date();
+
+    int currentRevision() default 1;
+
+    String lastModified() default "N/A";
+
+    String lastModifiedBy() default "N/A";
+
+    String[] reviewers();
 }

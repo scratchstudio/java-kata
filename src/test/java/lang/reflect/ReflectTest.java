@@ -1,5 +1,8 @@
 package lang.reflect;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,9 +10,6 @@ import org.junit.Test;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 /**
  * Created by kjnam on 2016. 10. 17..
@@ -89,4 +89,19 @@ public class ReflectTest {
 		assertThat(method.invoke(refelct, 3), is(6));
 		assertThat(method.invoke(refelct, 10), is(20));
 	}
+}
+
+class Reflect {
+	public int field1;
+	public int field2;
+	public int field3;
+
+	public void method1() {}
+	public void method2() {}
+	public void method3() {}
+
+	private int privateMethod1(int number) {
+		return number * 2;
+	}
+
 }
