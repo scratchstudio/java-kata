@@ -5,31 +5,11 @@ import org.junit.Test;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 public class ComputableFutureTest {
     @Test
-    public void future_test() {
-        ExecutorService executorService = Executors.newCachedThreadPool();
-        Future<Double> future = executorService.submit(this::doSomeLongComputation);
-
-        doSomethingElse();
-
-        try {
-            Double result = future.get(1, TimeUnit.SECONDS);
-            System.out.println(String.format("Result: %s", result));
-        } catch (InterruptedException | ExecutionException | TimeoutException e) {
-            // do something
-            System.out.println("Failed to get future");
-        }
-    }
-
-    @Test
-    public void CompletableFuture_test() {
+    public void getShopAsync() {
         Shop shop = new Shop("Best Shop");
         long start = System.nanoTime();
         Future<Double> futurePrice = shop.getPriceAsync("my favorite product");
@@ -92,6 +72,11 @@ public class ComputableFutureTest {
                 }
             }).start();
             return futurePrice; // 계산 완료 기다리지 않고 future 반환
+        }
+
+        // getPriceAsync 와 동일하게 동작
+        public Future<Double> getPriceAsync2(String product) {
+            return CompletableFuture.supplyAsync(() -> calculatePrice(product));
         }
 
         private double calculatePrice(String product) {
